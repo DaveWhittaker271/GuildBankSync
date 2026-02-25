@@ -1,0 +1,9 @@
+{
+  "dependencies": {
+    "discord.js": "^14.25.1"
+  },
+  "scripts": {
+	"start-bot": "node --env-file=.env index.js",
+	"deploy-changes": "node --env-file=.env deploy-commands.js"
+  }
+}
