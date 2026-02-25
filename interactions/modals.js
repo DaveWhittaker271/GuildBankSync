@@ -2,7 +2,7 @@
 const fs = require('node:fs');
 const path = require('node:path');
 
-const { Collection } = require('discord.js');
+const { Collection, MessageFlags } = require('discord.js');
 
 const modals = new Collection(); 
 
@@ -26,7 +26,7 @@ module.exports = {
 		
 		return modals;
 	},
-	handleInteraction: async (interaction) => {
+	handleInteraction: async (client, interaction) => {
 		const modal = modals.get(interaction.customId);
 		
 		if (!modal) {
@@ -35,7 +35,7 @@ module.exports = {
 		}
 		
 		try {
-			await modal.interact(interaction);
+			await modal.interact(client, interaction);
 		} catch (error) {
 			console.error(error);
 			if (interaction.replied || interaction.deferred) {

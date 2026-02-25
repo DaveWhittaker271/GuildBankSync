@@ -1,11 +1,10 @@
 // Require the necessary discord.js classes
 const fs = require('node:fs');
 const path = require('node:path');
-const { Client, Collection, Events, GatewayIntentBits, MessageFlags } = require('discord.js');
+const { Client, Events, GatewayIntentBits } = require('discord.js');
 const { token } = require('./config.json');
 
 const commands = require('./interactions/commands.js');
-const modals = require('./interactions/modals.js');
 
 // Create a new client instance
 const client = new Client({ intents: [GatewayIntentBits.Guilds] });
@@ -20,15 +19,10 @@ client.login(token);
 
 // Init commands & modal handlers
 commands.setup(client);
-modals.setup();
 
 // Receive interaction events from Discord
 client.on(Events.InteractionCreate, async (interaction) => {
 	if (interaction.isChatInputCommand()) {
 		commands.handleInteraction(client, interaction);
-	}
-	
-	if (interaction.isModalSubmit()) {
-		modals.handleInteraction(interaction);
 	}
 });
