@@ -1,0 +1,9 @@
+// File should be named `config.json`, remove any comments - including this one
+
+{
+	"token": "XXXXXXXXX", 					// Token from the Bot set up page in Discord
+	"clientId": "XXXXXXXXXX", 				// Client ID from the Bot set up page in Discord 
+	"guildId": "XXXXXXXXXXXX", 				// Server ID
+	"channelId": "XXXXXXXXXX", 				// Forum channel to post into
+	"threadName": "Guild Bank Inventory" 	// Name of thread to create
+}

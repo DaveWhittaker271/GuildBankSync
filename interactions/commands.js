@@ -2,7 +2,7 @@
 const fs = require('node:fs');
 const path = require('node:path');
 
-const { Collection } = require('discord.js');
+const { Collection, MessageFlags } = require('discord.js');
 
 module.exports = {
 	setup: (client) => {
@@ -39,7 +39,7 @@ module.exports = {
 		}
 		
 		try {
-			await command.execute(interaction);
+			await command.execute(client, interaction);
 		} catch (error) {
 			console.error(error);
 			if (interaction.replied || interaction.deferred) {
